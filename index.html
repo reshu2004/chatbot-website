@@ -1,18 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Blank Website with Chatbot</title>
-    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Netflix Clone</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background-color: black;
+    }
+
+    .background {
+      background-image: url('https://assets.nflxext.com/ffe/siteui/vlv3/84c08b21-61b3-4978-b8f2-1c2cf6d8a3fa/d0ec4034-0a69-4f7e-9b29-dcb0a5ec6f4a/IN-en-20240311-popsignuptwoweeks-perspective_alpha_website_large.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 100%;
+      position: relative;
+    }
+
+    .overlay {
+      background: rgba(0, 0, 0, 0.6);
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      color: white;
+      text-align: center;
+      top: 35%;
+      padding: 0 20px;
+    }
+
+    .content h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .content h2 {
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+    }
+
+    .content input[type="email"] {
+      padding: 15px;
+      width: 40%;
+      max-width: 400px;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      margin-right: 10px;
+    }
+
+    .content button {
+      padding: 15px 25px;
+      background-color: #e50914;
+      color: white;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .content button:hover {
+      background-color: #b0060f;
+    }
+
+    .navbar {
+      position: absolute;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 50px;
+      z-index: 2;
+    }
+
+    .navbar img {
+      width: 120px;
+    }
+
+    .navbar button {
+      background-color: #e50914;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .content h1 {
+        font-size: 2rem;
+      }
+
+      .content h2 {
+        font-size: 1rem;
+      }
+
+      .content input[type="email"] {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      .content button {
+        width: 100%;
+      }
+
+      .navbar {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div class="background">
+    <div class="overlay"></div>
+    
+    <div class="navbar">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png" alt="Netflix Logo">
+      <button onclick="signIn()">Sign In</button>
+    </div>
+    
+    <div class="content">
+      <h1>Unlimited movies, TV shows and more</h1>
+      <h2>Watch anywhere. Cancel anytime.</h2>
+      <form onsubmit="getStarted(); return false;">
+        <input type="email" placeholder="Email address" required>
+        <button type="submit">Get Started</button>
+      </form>
+    </div>
+  </div>
 
-<df-messenger
-  intent="WELCOME"
-  chat-title="Reshu-ChatBot"
-  agent-id="1e04a16b-d8ff-4f31-a9f2-ad926c7452bb"
-  language-code="en"
-></df-messenger>
+  <script>
+    function signIn() {
+      alert("Sign In clicked (You can link it to a real login page).");
+    }
 
+    function getStarted() {
+      alert("Thank you! Redirecting to subscription page...");
+    }
+  </script>
+
+  <!-- 🔹 Dialogflow Messenger Integration -->
+  <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+  <df-messenger
+    intent="WELCOME"
+    chat-title="Reshu-ChatBot"
+    agent-id="1e04a16b-d8ff-4f31-a9f2-ad926c7452bb"
+    language-code="en"
+  ></df-messenger>
 </body>
 </html>
